@@ -31,10 +31,10 @@ def collect():
         print(tweet.text)
 
 def collect_by_user(user_id):
-    connexion = connect.twitter_setup()
-    statuses = connexion.user_timeline(id = user_id, count = 200)
+    connexion = twitter_setup()
+    statuses = connexion.user_timeline(id = user_id, count = 100)
     for status in statuses:
         print(status.text)
     return statuses
 
-collect_by_user()
+collect_by_user(1976143068)
