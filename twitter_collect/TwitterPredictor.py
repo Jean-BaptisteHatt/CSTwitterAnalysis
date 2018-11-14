@@ -15,6 +15,7 @@ def twitter_setup():
     return api
 # Twitter App access keys for @user
 
+
 # Consume:
 CONSUMER_KEY    = 'n3TzRWLq74mSlHWhsKUeGaroi'
 CONSUMER_SECRET = 'UOHHeW4qfyLlYmeS9GNTIjWzjgveBHbvmVhfRbiLMzqUcOlwdQ'
@@ -29,4 +30,11 @@ def collect():
     for tweet in tweets:
         print(tweet.text)
 
-collect()
+def collect_by_user(user_id):
+    connexion = connect.twitter_setup()
+    statuses = connexion.user_timeline(id = user_id, count = 200)
+    for status in statuses:
+        print(status.text)
+    return statuses
+
+collect_by_user()
