@@ -1,4 +1,5 @@
 import tweepy
+import numpy as np
 
 def twitter_setup():
     """
@@ -32,9 +33,33 @@ def collect():
 
 def collect_by_user(user_id):
     connexion = twitter_setup()
-    statuses = connexion.user_timeline(id = user_id, count = 100)
+    statuses = connexion.user_timeline(id = user_id, count = 1000)
     for status in statuses:
         print(status.text)
     return statuses
 
-collect_by_user(1976143068)
+##collect_by_user(15251629)
+collect()
+
+def get_candidate_queries(num_candidate, file_path):
+    """
+    Generate and return a list of string queries for the search Twitter API from the file file_path_num_candidate.txt
+    :param num_candidate: the number of the candidate
+    :param file_path: the path to the keyword and hashtag
+    files
+    :param type: type of the keyword, either "keywords" or "hashtags"
+    :return: (list) a list of string queries that can be done to the search API independently
+    """
+    try:
+        # TO COMPLETE
+    except IOError:
+        # TO COMPLETE
+
+
+rt_max  = np.max(data['RTs'])
+rt  = data[data.RTs == rt_max].index[0]
+
+# Max RTs:
+print("The tweet with more retweets is: \n{}".format(data['tweet_textual_content'][rt]))
+print("Number of retweets: {}".format(rt_max))
+print("{} characters.\n".format(data['len'][rt]))
