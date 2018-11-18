@@ -63,3 +63,19 @@ rt  = data[data.RTs == rt_max].index[0]
 print("The tweet with more retweets is: \n{}".format(data['tweet_textual_content'][rt]))
 print("Number of retweets: {}".format(rt_max))
 print("{} characters.\n".format(data['len'][rt]))
+
+
+
+tfav = pd.Series(data=data['Likes'].values, index=data['Date'])
+tret = pd.Series(data=data['RTs'].values, index=data['Date'])
+
+# Likes vs retweets visualization:
+tfav.plot(figsize=(16,4), label="Likes", legend=True)
+tret.plot(figsize=(16,4), label="Retweets", legend=True)
+
+plt.show()
+
+
+print("Percentage of positive tweets: {}%".format(len(pos_tweets)*100/len(data['tweet_textual_content'])))
+print("Percentage of neutral tweets: {}%".format(len(neu_tweets)*100/len(data['tweet_textual_content'])))
+print("Percentage de negative tweets: {}%".format(len(neg_tweets)*100/len(data['tweet_textual_content'])))
